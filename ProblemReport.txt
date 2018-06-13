@@ -1,0 +1,52 @@
+Sandcastle/SHFB does not fully support tuples:
+VS 2017 (2)
+Sandcastle/SHFB v2018.5.29.0
+Sandcastle project using Framework Version - Cross Platform (Net Core/Net Standard)
+Target assembly project using Target Framework - .NET Core 2.1
+In the following example:
+
+namespace SandDiag
+{
+    /// <summary>
+    /// summary of IFoo
+    /// </summary>
+    public interface IFoo
+    {
+        /// <summary>
+        /// summary of Bar
+        /// </summary>
+        /// <param name="someTuple">s/be an int and a string</param>
+        void Bar((int, string) someTuple);
+        /// <summary>
+        /// summary of Qux
+        /// </summary>
+        /// <returns>s/be a (int, string) or a ValueTuple&lt;int, string></returns>
+        (int, string) Qux();
+    }
+}
+
+references to tuples are corrupted on the SHFB generated documentation as below:
+
+void Bar(
+	(int , string , ) someTuple
+)
+Parameters
+someTuple
+Type: System.ValueTuple<Int32, String>
+
+(int , string , , , T1 , T2 ,  ,  ) Qux()
+Return Value
+Type: ValueTuple<Int32, String>
+
+In the case of the parameter an otiose trailing comma appears in the signature.  In the case of
+the return value there are multiple extra commas and type parameters in the signature.
+
+I could actually live with all of that but in my actual project the documentation of a method
+with a tuple return type is completely corrupted but I could not replicate it in a simple
+example and am hoping if we can fix this simple problem this will solve the complex one.
+
+The simple testcase project is at github.com/mikedamay/SandDiag.
+
+I am happy to help in fixing this.  Unfortunately I did not get off to a good start as I had
+problems installing the SHFB project with community edition.
+
