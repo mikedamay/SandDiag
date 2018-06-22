@@ -1,7 +1,7 @@
 Sandcastle/SHFB does not fully support tuples:
 VS 2017 (2)
 Sandcastle/SHFB v2018.5.29.0
-Sandcastle project using Framework Version - Cross Platform (Net Core/Net Standard)
+Sandcastle project using version: Cross Platform (Net Core/Net Standard)
 Target assembly project using Target Framework - .NET Core 2.1
 In the following example:
 
@@ -38,15 +38,15 @@ Type: System.ValueTuple<Int32, String>
 Return Value
 Type: ValueTuple<Int32, String>
 
-In the case of the parameter an otiose trailing comma appears in the signature.  In the case of
-the return value there are multiple extra commas and type parameters in the signature.
+In the case of the parameter an unexpected trailing comma appears in the signature.  In the case of
+the return value there are multiple unexpected extra commas and type parameters in the signature.
 
 I could actually live with all of that but in my actual project the documentation of a method
-with a tuple return type is completely corrupted but I could not replicate it in a simple
+with a tuple return type is completely corrupted.  I could not replicate it in a simple
 example and am hoping if we can fix this simple problem this will solve the complex one.
 
 The simple testcase project is at github.com/mikedamay/SandDiag.
 
 I am happy to help in fixing this.  Unfortunately I did not get off to a good start as I had
-problems installing the SHFB project with community edition.
+problems installing the SHFB project with the VS community edition.
 
